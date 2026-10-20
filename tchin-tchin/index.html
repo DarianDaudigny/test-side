@@ -1,0 +1,346 @@
+<!doctype html>
+<html lang="da">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tchin Tchin – Alkoholfrie premium cocktails</title>
+<meta name="description" content="Alkoholfrie premium cocktails klar til at shake. Til barer, hoteller, events og hjemme. Server på 20 sekunder.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --black:#0d0c0a; --ink:#16140f; --line:#2b271e;
+    --gold:#dcb44f; --gold-soft:#e9cf8a; --cream:#f4ede0; --muted:#a39a88;
+    --serif:"Cormorant Garamond", Georgia, serif; --sans:Inter, system-ui, sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{background:var(--black);color:var(--cream);font-family:var(--sans);line-height:1.6;-webkit-font-smoothing:antialiased}
+  img{display:block;max-width:100%}
+  a{color:inherit}
+  .wrap{max-width:1180px;margin:0 auto;padding:0 20px}
+
+  /* Top */
+  .bar{background:var(--gold);color:var(--black);text-align:center;font-size:.85rem;font-weight:500;padding:8px 16px}
+  header{position:sticky;top:0;z-index:20;background:rgba(13,12,10,.88);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+  .nav{display:flex;align-items:center;justify-content:space-between;height:72px}
+  .nav img{height:46px;width:auto}
+  .nav ul{display:flex;gap:28px;list-style:none;font-size:.92rem}
+  .nav ul a{text-decoration:none;color:var(--muted);transition:color .2s}
+  .nav ul a:hover{color:var(--gold)}
+  .btn{display:inline-block;text-decoration:none;font-weight:600;font-size:.95rem;padding:13px 24px;border-radius:999px;transition:transform .2s, background .2s}
+  .btn:hover{transform:translateY(-2px)}
+  .btn-gold{background:var(--gold);color:var(--black)}
+  .btn-gold:hover{background:var(--gold-soft)}
+  .btn-line{border:1px solid var(--gold);color:var(--gold)}
+  .nav .btn{padding:10px 18px;font-size:.88rem}
+
+  /* Hero */
+  .hero{display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:center;padding:88px 0 96px}
+  .eyebrow{font-size:.78rem;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);margin-bottom:18px}
+  h1,h2,h3{font-family:var(--serif);font-weight:500;line-height:1.05}
+  h1{font-size:clamp(2.8rem,6.5vw,5.2rem)}
+  h1 em{color:var(--gold);font-style:italic}
+  .lead{font-size:1.12rem;color:var(--muted);max-width:30em;margin:24px 0 34px}
+  .ctas{display:flex;gap:14px;flex-wrap:wrap}
+  .hero-img{position:relative;border-radius:28px;overflow:hidden;aspect-ratio:4/5;border:1px solid var(--line)}
+  .hero-img img{width:100%;height:100%;object-fit:cover}
+  .stamp{position:absolute;left:20px;bottom:20px;background:var(--black);border:1px solid var(--gold);border-radius:999px;padding:10px 18px;font-size:.85rem;color:var(--gold)}
+
+  /* Strip */
+  .strip{border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+  .strip .wrap{display:grid;grid-template-columns:repeat(4,1fr)}
+  .strip div{padding:26px 10px;text-align:center;border-right:1px solid var(--line)}
+  .strip div:last-child{border-right:0}
+  .strip b{display:block;font-family:var(--serif);font-size:2rem;color:var(--gold);font-weight:500}
+  .strip span{font-size:.85rem;color:var(--muted)}
+
+  section{padding:110px 0}
+  .head{display:flex;justify-content:space-between;align-items:end;gap:24px;margin-bottom:48px;flex-wrap:wrap}
+  h2{font-size:clamp(2.2rem,4.5vw,3.4rem)}
+  .head p{color:var(--muted);max-width:28em}
+
+  /* Products */
+  .grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+  .card{background:var(--ink);border:1px solid var(--line);border-radius:20px;overflow:hidden;display:flex;flex-direction:column;text-decoration:none;transition:border-color .25s, transform .25s}
+  .card:hover{border-color:var(--gold);transform:translateY(-4px)}
+  .card .ph{aspect-ratio:1;background:#1f1c16;overflow:hidden}
+  .card .ph img{width:100%;height:100%;object-fit:cover;transition:transform .5s}
+  .card:hover .ph img{transform:scale(1.05)}
+  .card .ph.type{display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-size:2.2rem;font-style:italic;color:var(--gold);background:radial-gradient(circle at 30% 30%,#2a2416,#13110d)}
+  .card .txt{padding:18px 20px 20px;display:flex;flex-direction:column;gap:6px;flex:1}
+  .card h3{font-size:1.5rem}
+  .card p{font-size:.88rem;color:var(--muted);flex:1}
+  .card .row{display:flex;justify-content:space-between;align-items:center;margin-top:10px;font-size:.9rem}
+  .card .price{color:var(--gold);font-weight:600}
+  .card .go{color:var(--muted)}
+  .center{text-align:center;margin-top:44px}
+
+  /* How */
+  .how{background:var(--cream);color:var(--black)}
+  .how .head p{color:#5d5547}
+  .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;counter-reset:s}
+  .step{border-top:2px solid var(--black);padding-top:22px}
+  .step::before{counter-increment:s;content:"0" counter(s);font-family:var(--serif);font-size:2.6rem;display:block;margin-bottom:8px;color:#9b7a24}
+  .step h3{font-size:1.5rem;margin-bottom:6px}
+  .step p{color:#5d5547;font-size:.95rem}
+  .tip{margin-top:44px;background:var(--black);color:var(--cream);border-radius:20px;padding:26px 30px;display:flex;gap:18px;align-items:center}
+  .tip b{color:var(--gold);font-family:var(--serif);font-size:1.4rem;font-weight:500;white-space:nowrap}
+
+  /* Split */
+  .split{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+  .panel{border-radius:24px;padding:46px 40px;border:1px solid var(--line);display:flex;flex-direction:column;gap:18px}
+  .panel.biz{background:linear-gradient(160deg,#211d13,#0d0c0a 70%);border-color:#4a3f22}
+  .panel h3{font-size:2.3rem}
+  .panel ul{list-style:none;display:grid;gap:10px;color:var(--muted)}
+  .panel li::before{content:"—  ";color:var(--gold)}
+  .panel .ctas{margin-top:auto;padding-top:10px}
+
+  /* Events */
+  .events{display:flex;flex-wrap:wrap;gap:12px}
+  .events a{text-decoration:none;border:1px solid var(--line);border-radius:999px;padding:12px 22px;color:var(--cream);transition:all .2s}
+  .events a:hover{border-color:var(--gold);color:var(--gold)}
+
+  /* Proof */
+  .proof{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+  .award{background:var(--ink);border:1px solid var(--line);border-radius:20px;padding:30px}
+  .award small{color:var(--gold);letter-spacing:.18em;text-transform:uppercase;font-size:.72rem}
+  .award h3{font-size:1.7rem;margin:8px 0 4px}
+  .award p{color:var(--muted);font-size:.92rem}
+  .partners{margin-top:40px;display:flex;flex-wrap:wrap;gap:12px 40px;align-items:center;color:var(--muted);font-size:.9rem}
+  .partners b{font-family:var(--serif);font-size:1.6rem;font-weight:500;color:var(--cream)}
+
+  /* Footer */
+  footer{border-top:1px solid var(--line);padding:80px 0 40px}
+  .foot{display:grid;grid-template-columns:1.3fr 1fr 1fr;gap:40px}
+  .foot img{height:64px;width:auto;margin-bottom:18px}
+  .foot h4{font-size:.78rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:14px;font-weight:600}
+  .foot ul{list-style:none;display:grid;gap:8px}
+  .foot a{text-decoration:none;color:var(--muted)}
+  .foot a:hover{color:var(--gold)}
+  .foot p{color:var(--muted);max-width:24em}
+  .legal{margin-top:60px;padding-top:24px;border-top:1px solid var(--line);display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;font-size:.8rem;color:#6d665a}
+
+  @media (max-width:960px){
+    .nav ul{display:none}
+    .hero{grid-template-columns:1fr;padding:56px 0 70px;gap:40px}
+    .grid{grid-template-columns:repeat(2,1fr)}
+    .steps{grid-template-columns:repeat(2,1fr);row-gap:36px}
+    .split,.proof{grid-template-columns:1fr}
+    .foot{grid-template-columns:1fr 1fr}
+    section{padding:80px 0}
+  }
+  @media (max-width:560px){
+    .strip .wrap{grid-template-columns:repeat(2,1fr)}
+    .strip div:nth-child(2){border-right:0}
+    .strip div:nth-child(-n+2){border-bottom:1px solid var(--line)}
+    .grid{grid-template-columns:1fr 1fr;gap:12px}
+    .card .txt{padding:14px}
+    .card h3{font-size:1.25rem}
+    .card p{display:none}
+    .steps{grid-template-columns:1fr}
+    .panel{padding:34px 24px}
+    .tip{flex-direction:column;align-items:flex-start}
+    .foot{grid-template-columns:1fr}
+  }
+</style>
+</head>
+<body>
+
+<div class="bar">Tilsæt spiritus, hvis du vil – eller nyd dem 0,0 %. Levering inden for 3–5 hverdage.</div>
+
+<header>
+  <div class="wrap nav">
+    <a href="#top" aria-label="Tchin Tchin forside"><img src="https://tchin-tchin.dk/wp-content/uploads/2024/02/TT-logo-ready_gold-2.png" alt="Tchin Tchin"></a>
+    <ul>
+      <li><a href="#drinks">Drinks</a></li>
+      <li><a href="#saadan">Sådan gør du</a></li>
+      <li><a href="#erhverv">Erhverv</a></li>
+      <li><a href="#events">Events</a></li>
+      <li><a href="#kontakt">Kontakt</a></li>
+    </ul>
+    <a class="btn btn-gold" href="https://tchin-tchin.dk/shop/">Shop</a>
+  </div>
+</header>
+
+<main id="top">
+  <div class="wrap hero">
+    <div>
+      <p class="eyebrow">Alkoholfri · Premium · Ready to shake</p>
+      <h1>Cocktails i verdensklasse på <em>20 sekunder</em></h1>
+      <p class="lead">Tchin Tchin er alkoholfrie premium cocktails med hjemmelavede siruper. Shake og server dem som de er – eller tilsæt din egen spiritus. Til baren, hotellet, festen og middagen derhjemme.</p>
+      <div class="ctas">
+        <a class="btn btn-gold" href="https://tchin-tchin.dk/shop/">Se alle drinks</a>
+        <a class="btn btn-line" href="https://tchin-tchin.dk/gratis-smagspakke/">Gratis smagspakke til erhverv</a>
+      </div>
+    </div>
+    <div class="hero-img">
+      <img src="https://tchin-tchin.dk/wp-content/uploads/2025/07/Marquis-2-scaled.jpg" alt="Marquis cocktail fra Tchin Tchin">
+      <span class="stamp">Marquis · Bedste cocktail, DM 2022</span>
+    </div>
+  </div>
+
+  <div class="strip">
+    <div class="wrap">
+      <div><b>0,0 %</b><span>Alkohol</span></div>
+      <div><b>20 sek.</b><span>Fra flaske til glas</span></div>
+      <div><b>7</b><span>Drinks pr. flaske</span></div>
+      <div><b>1 år</b><span>Holdbarhed uåbnet</span></div>
+    </div>
+  </div>
+
+  <section id="drinks">
+    <div class="wrap">
+      <div class="head">
+        <div><p class="eyebrow">Sortimentet</p><h2>Vælg din favorit</h2></div>
+        <p>Alle flasker koster 161 kr. inkl. pant. Køb 3 eller 6 og spar.</p>
+      </div>
+      <div class="grid">
+        <a class="card" href="https://tchin-tchin.dk/vare/marquis-alkoholfri/">
+          <div class="ph"><img loading="lazy" src="https://tchin-tchin.dk/wp-content/uploads/2023/02/MARQUIS-min-450x450.png" alt="Marquis"></div>
+          <div class="txt"><h3>Marquis</h3><p>Slåen, rødbede, hindbær, lakrids og tranebær.</p><div class="row"><span class="price">161 kr.</span><span class="go">Køb →</span></div></div>
+        </a>
+        <a class="card" href="https://tchin-tchin.dk/vare/espresso-martini-alkoholfri/">
+          <div class="ph"><img loading="lazy" src="https://tchin-tchin.dk/wp-content/uploads/2024/03/2-1-600x600.png" alt="Espresso Martini"></div>
+          <div class="txt"><h3>Espresso Martini</h3><p>Espresso og karamel med noter af chokolade og lakrids.</p><div class="row"><span class="price">161 kr.</span><span class="go">Køb →</span></div></div>
+        </a>
+        <a class="card" href="https://tchin-tchin.dk/vare/passionada-alkoholfri/">
+          <div class="ph"><img loading="lazy" src="https://tchin-tchin.dk/wp-content/uploads/2025/02/Untitled-design-20-450x450.png" alt="Passionada"></div>
+          <div class="txt"><h3>Passionada</h3><p>Passion, mango, appelsin og vanilje.</p><div class="row"><span class="price">161 kr.</span><span class="go">Køb →</span></div></div>
+        </a>
+        <a class="card" href="https://tchin-tchin.dk/vare/amaretto-sour-alkoholfri/">
+          <div class="ph"><img loading="lazy" src="https://tchin-tchin.dk/wp-content/uploads/2025/03/Amaretto-sour-min-450x450.jpg" alt="Amaretto Sour"></div>
+          <div class="txt"><h3>Amaretto Sour</h3><p>Citron, amaretto-sirup og angostura bitter.</p><div class="row"><span class="price">161 kr.</span><span class="go">Køb →</span></div></div>
+        </a>
+        <a class="card" href="https://tchin-tchin.dk/vare/smooth-colada-alkoholfri/">
+          <div class="ph"><img loading="lazy" src="https://tchin-tchin.dk/wp-content/uploads/2025/04/Screenshot_20250422_170618_Instagram-450x450.jpg" alt="Smooth Colada"></div>
+          <div class="txt"><h3>Smooth Colada</h3><p>Kokos, hvid chokolade og ananas.</p><div class="row"><span class="price">161 kr.</span><span class="go">Køb →</span></div></div>
+        </a>
+        <a class="card" href="https://tchin-tchin.dk/vare/golden-ginger-alkoholfri/">
+          <div class="ph"><img loading="lazy" src="https://tchin-tchin.dk/wp-content/uploads/2025/04/Copy-of-Golden-Ginger-845x684.jpg" alt="Golden Ginger"></div>
+          <div class="txt"><h3>Golden Ginger</h3><p>Ingefær-citron, lime, amaretto og angostura.</p><div class="row"><span class="price">161 kr.</span><span class="go">Køb →</span></div></div>
+        </a>
+        <a class="card" href="https://tchin-tchin.dk/vare/cucudill-alkoholfri/">
+          <div class="ph"><img loading="lazy" src="https://tchin-tchin.dk/wp-content/uploads/2025/04/Copy-of-Cucudil-845x684.jpg" alt="Cucudill"></div>
+          <div class="txt"><h3>Cucudill</h3><p>Agurk, dild, æble, hyldeblomst og lime.</p><div class="row"><span class="price">161 kr.</span><span class="go">Køb →</span></div></div>
+        </a>
+        <a class="card" href="https://tchin-tchin.dk/vare/6-flasker-mocktails/">
+          <div class="ph type">6 flasker</div>
+          <div class="txt"><h3>Mix selv 6</h3><p>Vælg seks flasker – også Matchango og Cosmo Kiss.</p><div class="row"><span class="price">906 kr.</span><span class="go">Køb →</span></div></div>
+        </a>
+      </div>
+      <div class="center"><a class="btn btn-line" href="https://tchin-tchin.dk/shop/">Se hele shoppen</a></div>
+    </div>
+  </section>
+
+  <section id="saadan" class="how">
+    <div class="wrap">
+      <div class="head">
+        <div><p class="eyebrow" style="color:#9b7a24">Sådan gør du</p><h2>Fra flaske til glas</h2></div>
+        <p>Ingen bartender-uddannelse nødvendig. Det tager omkring 20 sekunder.</p>
+      </div>
+      <div class="steps">
+        <div class="step"><h3>Hæld</h3><p>Hæld 10–14 cl cocktail i en shaker.</p></div>
+        <div class="step"><h3>Is</h3><p>Tilsæt 3 isterninger.</p></div>
+        <div class="step"><h3>Shake</h3><p>Shake kraftigt i 10 sekunder.</p></div>
+        <div class="step"><h3>Server</h3><p>Hæld op, top evt. med danskvand, og pynt.</p></div>
+      </div>
+      <div class="tip"><b>Vil du have alkohol i?</b><span>Tilsæt 2–4 cl af din yndlingsspiritus – vodka, rom, gin eller whisky – før du shaker.</span></div>
+    </div>
+  </section>
+
+  <section id="erhverv">
+    <div class="wrap">
+      <div class="head"><div><p class="eyebrow">For alle</p><h2>Hjemme eller bag baren</h2></div></div>
+      <div class="split">
+        <div class="panel">
+          <p class="eyebrow">Private</p>
+          <h3>Gør middagen til en cocktailbar</h3>
+          <ul>
+            <li>Bestil online med levering på 3–5 hverdage</li>
+            <li>7 drinks i hver flaske</li>
+            <li>Lige gode med og uden alkohol</li>
+          </ul>
+          <div class="ctas"><a class="btn btn-gold" href="https://tchin-tchin.dk/shop/">Gå til shoppen</a></div>
+        </div>
+        <div class="panel biz">
+          <p class="eyebrow">Erhverv</p>
+          <h3>Den totale barløsning</h3>
+          <ul>
+            <li>Til restauranter, hoteller, barer og konferencecentre</li>
+            <li>Ensartet kvalitet hver gang – også i travle perioder</li>
+            <li>Bliv klogere med en barkonsulent</li>
+          </ul>
+          <div class="ctas">
+            <a class="btn btn-gold" href="https://tchin-tchin.dk/gratis-smagspakke/">Bestil gratis smagspakke</a>
+            <a class="btn btn-line" href="https://tchin-tchin.dk/book-bar-konsulent/">Book barkonsulent</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="events" style="padding-top:0">
+    <div class="wrap">
+      <div class="head">
+        <div><p class="eyebrow">Events</p><h2>Cocktails til enhver fest</h2></div>
+        <p>Vi kommer gerne og laver drinks til jeres arrangement.</p>
+      </div>
+      <div class="events">
+        <a href="https://tchin-tchin.dk/book-os-til-jeres-events/">Firmafest</a>
+        <a href="https://tchin-tchin.dk/book-os-til-jeres-events/">Bryllup</a>
+        <a href="https://tchin-tchin.dk/book-os-til-jeres-events/">Festival</a>
+        <a href="https://tchin-tchin.dk/book-os-til-jeres-events/">Fødselsdag</a>
+        <a href="https://tchin-tchin.dk/book-os-til-jeres-events/">Studentergilde</a>
+        <a href="https://tchin-tchin.dk/book-os-til-jeres-events/">Fredagsbar</a>
+        <a class="btn-gold" style="background:var(--gold);color:var(--black);border-color:var(--gold);font-weight:600" href="https://tchin-tchin.dk/book-os-til-jeres-events/">Book os →</a>
+      </div>
+    </div>
+  </section>
+
+  <section style="padding-top:0">
+    <div class="wrap">
+      <div class="head"><div><p class="eyebrow">Anerkendelse</p><h2>Prisvindende opskrifter</h2></div></div>
+      <div class="proof">
+        <div class="award"><small>VM 2018</small><h3>Espresso Martini</h3><p>Bedste flair-drink ved verdensmesterskabet.</p></div>
+        <div class="award"><small>DM 2022</small><h3>Marquis</h3><p>Bedste cocktail ved det danske mesterskab.</p></div>
+      </div>
+      <div class="partners"><span>Forhandles bl.a. via</span><b>Inco</b><b>Dagrofa</b><b>Sinnerup</b><b>Scandic</b></div>
+    </div>
+  </section>
+</main>
+
+<footer id="kontakt">
+  <div class="wrap">
+    <div class="foot">
+      <div>
+        <img src="https://tchin-tchin.dk/wp-content/uploads/2024/02/TT-logo-ready_gold-2.png" alt="Tchin Tchin">
+        <p>Alkoholfrie premium cocktails. Ready to shake.</p>
+      </div>
+      <div>
+        <h4>Kontakt</h4>
+        <ul>
+          <li><a href="mailto:info@tchin-tchin.dk">info@tchin-tchin.dk</a></li>
+          <li><a href="https://tchin-tchin.dk/kontakt/">Kontaktformular</a></li>
+          <li><a href="https://tchin-tchin.dk/b2b/">Erhverv (B2B)</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Følg os</h4>
+        <ul>
+          <li><a href="https://www.instagram.com/tchintchin.dk">Instagram</a></li>
+          <li><a href="https://www.facebook.com/Tchin-Tchin-112008554747164">Facebook</a></li>
+          <li><a href="https://www.linkedin.com/company/tchin-tchin-premium-cocktails">LinkedIn</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="legal">
+      <span>© Tchin Tchin</span>
+      <span><a href="https://tchin-tchin.dk/handelsbetingelser/">Handelsbetingelser</a> · <a href="https://tchin-tchin.dk/privatlivspolitik/">Privatlivspolitik</a></span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
