@@ -43,9 +43,9 @@ h2{font-size:clamp(2.6rem,7vw,5.5rem)}
 
 /* hero: menukortet */
 .hero{background:var(--c);color:var(--ci);transition:background .5s,color .5s;padding-bottom:28px;overflow:hidden}
-.stage{display:grid;grid-template-columns:1.15fr .85fr;gap:40px;align-items:end;padding-top:40px}
-.claim{font-weight:600;font-size:1.05rem;max-width:30em;margin-bottom:26px}
-.dname{font-size:clamp(4rem,13vw,11rem);line-height:.84;letter-spacing:-.02em;text-wrap:balance;min-height:1.7em;display:flex;align-items:flex-end}
+.stage{display:grid;grid-template-columns:1.2fr .8fr;gap:40px;align-items:end;padding-top:28px}
+.claim{font-weight:600;font-size:1.05rem;max-width:30em;margin-bottom:18px}
+.dname{font-size:clamp(4rem,13vw,11rem);line-height:.84;letter-spacing:-.02em;text-wrap:balance;min-height:1em}
 .dmeta{display:grid;grid-template-columns:1fr auto;gap:20px 32px;margin-top:28px;max-width:640px;align-items:start}
 .dnotes{font-size:1.25rem;font-weight:600}
 .dspirit{grid-column:1/2;opacity:.85;font-size:1rem}
@@ -55,10 +55,10 @@ h2{font-size:clamp(2.6rem,7vw,5.5rem)}
 .btn{display:inline-block;text-decoration:none;font-weight:600;padding:14px 26px;border-radius:999px;border:2px solid var(--ci)}
 .btn.solid{background:var(--ci);color:var(--c)}
 .price{font-family:var(--disp);font-weight:700;font-size:2rem}
-.glass{justify-self:center;width:min(420px,100%);aspect-ratio:3/4;border-radius:999px 999px 28px 28px;overflow:hidden;background:color-mix(in srgb,var(--ci) 14%,transparent)}
+.glass{justify-self:center;width:min(360px,100%);aspect-ratio:4/5;border-radius:999px 999px 28px 28px;overflow:hidden;background:color-mix(in srgb,var(--ci) 14%,transparent)}
 .glass img{width:100%;height:100%;object-fit:cover;transition:opacity .35s}
 .glass img.fit{object-fit:contain;padding:28px}
-.picker{margin-top:34px}
+.picker{margin-top:26px}
 .picker p{font-size:.9rem;font-weight:600;margin-bottom:10px}
 .chips{display:flex;gap:8px;list-style:none;overflow-x:auto;padding-bottom:8px;scrollbar-width:thin}
 .chip{font:600 .95rem var(--text);display:flex;gap:8px;align-items:center;cursor:pointer;white-space:nowrap;background:transparent;color:var(--ci);border:1.5px solid color-mix(in srgb,var(--ci) 40%,transparent);border-radius:999px;padding:8px 14px 8px 8px}
@@ -168,7 +168,9 @@ footer.site .mail{font-family:var(--disp);font-weight:700;font-size:1.6rem}
   .top nav{display:none}
   .shopbtn{margin-left:auto}
   .stage{grid-template-columns:1fr}
-  .glass{order:-1;width:min(300px,70%);justify-self:start}
+  .hero .wrap{display:flex;flex-direction:column}
+  .picker{order:-1;margin-top:20px}
+  .glass{order:-1;width:min(260px,62%);aspect-ratio:1;justify-self:start}
   .dname{min-height:0}
   .proof ul{grid-template-columns:1fr 1fr}
   .marks{grid-template-columns:1fr 1fr;row-gap:24px}
@@ -189,7 +191,9 @@ footer.site .mail{font-family:var(--disp);font-weight:700;font-size:1.6rem}
 @media (max-width:560px){
   .dmeta{grid-template-columns:1fr}
   .dbadge{justify-self:start;grid-row:1}
-  .proof ul,.marks,.evgrid,.fgrid{grid-template-columns:1fr}
+  .marks,.evgrid,.fgrid{grid-template-columns:1fr}
+  .proof li{padding:18px 12px 18px 0}
+  .proof b{font-size:1.3rem}
   .badge{display:block;width:max-content;margin:8px 0 0;transform:none}
 }
 @media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
@@ -232,7 +236,7 @@ footer.site .mail{font-family:var(--disp);font-weight:700;font-size:1.6rem}
             <a class="btn" href="#drinks">Se alle drinks</a>
           </div>
         </div>
-        <div class="glass"><img id="dimg" src="https://tchin-tchin.dk/wp-content/uploads/2023/02/MARQUIS-min-450x450.png" alt="Marquis alkoholfri"></div>
+        <div class="glass"><img id="dimg" src="https://tchin-tchin.dk/wp-content/uploads/2025/04/Copy-of-Copy-of-Marquis-845x684.jpg" alt="Marquis alkoholfri"></div>
       </div>
       <div class="picker">
         <p id="pickerlabel">Vælg en drink</p>
@@ -289,7 +293,7 @@ footer.site .mail{font-family:var(--disp);font-weight:700;font-size:1.6rem}
             <span class="plus" aria-hidden="true"></span>
           </summary>
           <div class="more">
-            <img loading="lazy" src="https://tchin-tchin.dk/wp-content/uploads/2023/02/MARQUIS-min-450x450.png" alt="Marquis alkoholfri">
+            <img loading="lazy" src="https://tchin-tchin.dk/wp-content/uploads/2025/04/Copy-of-Copy-of-Marquis-845x684.jpg" alt="Marquis alkoholfri">
             <div class="moretext"><p>Denne frugtige sag er lavet med citronskal, skovsyre og rødbede for at bringe friskhed og jordnære smage. Den har en frugtagtig sødme fra vores hjemmelavede hindbærsirup, et strejf af lakrids, et skvæt citron og tranebær for at bringe en syrlig og bitter smag frem.</p><h4>Servering</h4><p>Servér som en velkomstdrink eller til en lækker middag med lyst kød eller fisk. Passer godt med elementer som bær, rødbede og timian.</p><h4>Historien</h4><p>Christophe arbejdede på baren Castenskiold i 2015 og satte Lady in red på menuen. Nogle år senere blev han inspireret til at arbejde med rødbede og skovsyre og skabte dermed Marquis, da han skulle deltage i DM 2022. Marquis vandt prisen “Bedste drink i 2022”, og siden har den været en del af sortimentet hos Tchin Tchin.</p><h4>Lav en cocktail</h4><p>Tilføj 2–4 cl gin eller vodka til 10 cl Marquis. Eller lav en spritz: 10 cl Marquis i et vinglas med is, toppet med cava.</p>
               <a class="buy" href="https://tchin-tchin.dk/vare/marquis-alkoholfri/">Køb Marquis i webshoppen</a>
             </div>
@@ -571,7 +575,7 @@ footer.site .mail{font-family:var(--disp);font-weight:700;font-size:1.6rem}
 
 <script>
 (function(){
-  var D=[{"name": "Marquis", "color": "#8a1c30", "ink": "#fff4ee", "img": "https://tchin-tchin.dk/wp-content/uploads/2023/02/MARQUIS-min-450x450.png", "url": "https://tchin-tchin.dk/vare/marquis-alkoholfri/", "notes": "Citronskal, skovsyre, rødbede, hindbær, lakrids og tranebær", "spirit": "Tilføj 2–4 cl gin eller vodka til 10 cl Marquis. Eller lav en spritz: 10 cl Marquis i et vinglas med is, toppet med cava.", "award": "Bedste cocktail til DM 2022"}, {"name": "Espresso Martini", "color": "#3a2419", "ink": "#f6e9dc", "img": "https://tchin-tchin.dk/wp-content/uploads/2024/03/2-1-600x600.png", "url": "https://tchin-tchin.dk/vare/espresso-martini-alkoholfri/", "notes": "Espresso, karamel, chokolade og et strejf af lakrids", "spirit": "Tilføj 2–4 cl vodka eller rom til 10 cl Espresso Martini.", "award": "Bedste flair-drink ved VM 2018"}, {"name": "Passionada", "color": "#f0962f", "ink": "#2a1604", "img": "https://tchin-tchin.dk/wp-content/uploads/2025/02/Untitled-design-20-450x450.png", "url": "https://tchin-tchin.dk/vare/passionada-alkoholfri/", "notes": "Passionsfrugt, mango, appelsin og vanilje", "spirit": "Tilføj 2–4 cl vodka, rom eller tequila til 10 cl Passionada og shake godt. Vodka er det mest valgte, mens rom og tequila giver en lækker, spicy smag.", "award": "I top 3 over vores mest populære"}, {"name": "Golden Ginger", "color": "#d6a52a", "ink": "#251a02", "img": "https://tchin-tchin.dk/wp-content/uploads/2025/04/Copy-of-Golden-Ginger-845x684.jpg", "url": "https://tchin-tchin.dk/vare/golden-ginger-alkoholfri/", "notes": "Ingefær, citron, lime, amaretto og angostura", "spirit": "Tilføj 2–4 cl whisky eller rom til 10 cl Golden Ginger, og shake hårdt med 3 isterninger. Kan også mixes med vodka, hvis du er til en mere neutral spiritus.", "award": null}, {"name": "Cucudill", "color": "#b5cf78", "ink": "#1c2608", "img": "https://tchin-tchin.dk/wp-content/uploads/2025/04/Copy-of-Cucudil-845x684.jpg", "url": "https://tchin-tchin.dk/vare/cucudill-alkoholfri/", "notes": "Agurk, dild, citron, æble, lime og hyldeblomst", "spirit": "Tilføj 2–4 cl gin, vodka eller vermouth til 10 cl Cucudill, og shake hårdt i 10 sekunder med 3 isterninger.", "award": null}, {"name": "Smooth Colada", "color": "#ece2c9", "ink": "#2a2416", "img": "https://tchin-tchin.dk/wp-content/uploads/2025/04/Screenshot_20250422_170618_Instagram-450x450.jpg", "url": "https://tchin-tchin.dk/vare/smooth-colada-alkoholfri/", "notes": "Kokos, hvid chokolade og ananas", "spirit": "Tilføj 2–4 cl lys eller mørk rom, efter hvad du foretrækker.", "award": null}, {"name": "Amaretto Sour", "color": "#c9822f", "ink": "#24140a", "img": "https://tchin-tchin.dk/wp-content/uploads/2025/03/Amaretto-sour-min-450x450.jpg", "url": "https://tchin-tchin.dk/vare/amaretto-sour-alkoholfri/", "notes": "Citron, amarettosirup og angostura", "spirit": "Tilsæt 2–4 cl bourbon, rom eller cognac til 10 cl Amaretto Sour. Det mest valgte er rom.", "award": null}, {"name": "Matchango", "color": "#7b9f45", "ink": "#141d06", "img": "https://tchin-tchin.dk/wp-content/uploads/2026/09/Matchango-glass.png", "url": "https://tchin-tchin.dk/vare/matchango-alkoholfri/", "notes": "Hjemmelavet matchasirup, mango, æble og yuzu", "spirit": "Tilføj 4 cl gin eller vodka til 10 cl Matchango. Shake med 3 isterninger og server med garnish.", "award": "Ny"}, {"name": "Cosmo Kiss", "color": "#d6416a", "ink": "#fff1f4", "img": "https://tchin-tchin.dk/wp-content/uploads/2026/09/Cosmo-kiss-glass.png", "url": "https://tchin-tchin.dk/vare/cosmo-kiss-alkoholfri/", "notes": "Hibiscus, tranebær, mandarin og appelsin", "spirit": "Tilføj 4 cl vodka til 10 cl Cosmo Kiss. Shake med 3 isterninger og server med garnish.", "award": "Ny"}];
+  var D=[{"name": "Marquis", "color": "#8a1c30", "ink": "#fff4ee", "img": "https://tchin-tchin.dk/wp-content/uploads/2025/04/Copy-of-Copy-of-Marquis-845x684.jpg", "url": "https://tchin-tchin.dk/vare/marquis-alkoholfri/", "notes": "Citronskal, skovsyre, rødbede, hindbær, lakrids og tranebær", "spirit": "Tilføj 2–4 cl gin eller vodka til 10 cl Marquis. Eller lav en spritz: 10 cl Marquis i et vinglas med is, toppet med cava.", "award": "Bedste cocktail til DM 2022"}, {"name": "Espresso Martini", "color": "#3a2419", "ink": "#f6e9dc", "img": "https://tchin-tchin.dk/wp-content/uploads/2024/03/2-1-600x600.png", "url": "https://tchin-tchin.dk/vare/espresso-martini-alkoholfri/", "notes": "Espresso, karamel, chokolade og et strejf af lakrids", "spirit": "Tilføj 2–4 cl vodka eller rom til 10 cl Espresso Martini.", "award": "Bedste flair-drink ved VM 2018"}, {"name": "Passionada", "color": "#f0962f", "ink": "#2a1604", "img": "https://tchin-tchin.dk/wp-content/uploads/2025/02/Untitled-design-20-450x450.png", "url": "https://tchin-tchin.dk/vare/passionada-alkoholfri/", "notes": "Passionsfrugt, mango, appelsin og vanilje", "spirit": "Tilføj 2–4 cl vodka, rom eller tequila til 10 cl Passionada og shake godt. Vodka er det mest valgte, mens rom og tequila giver en lækker, spicy smag.", "award": "I top 3 over vores mest populære"}, {"name": "Golden Ginger", "color": "#d6a52a", "ink": "#251a02", "img": "https://tchin-tchin.dk/wp-content/uploads/2025/04/Copy-of-Golden-Ginger-845x684.jpg", "url": "https://tchin-tchin.dk/vare/golden-ginger-alkoholfri/", "notes": "Ingefær, citron, lime, amaretto og angostura", "spirit": "Tilføj 2–4 cl whisky eller rom til 10 cl Golden Ginger, og shake hårdt med 3 isterninger. Kan også mixes med vodka, hvis du er til en mere neutral spiritus.", "award": null}, {"name": "Cucudill", "color": "#b5cf78", "ink": "#1c2608", "img": "https://tchin-tchin.dk/wp-content/uploads/2025/04/Copy-of-Cucudil-845x684.jpg", "url": "https://tchin-tchin.dk/vare/cucudill-alkoholfri/", "notes": "Agurk, dild, citron, æble, lime og hyldeblomst", "spirit": "Tilføj 2–4 cl gin, vodka eller vermouth til 10 cl Cucudill, og shake hårdt i 10 sekunder med 3 isterninger.", "award": null}, {"name": "Smooth Colada", "color": "#ece2c9", "ink": "#2a2416", "img": "https://tchin-tchin.dk/wp-content/uploads/2025/04/Screenshot_20250422_170618_Instagram-450x450.jpg", "url": "https://tchin-tchin.dk/vare/smooth-colada-alkoholfri/", "notes": "Kokos, hvid chokolade og ananas", "spirit": "Tilføj 2–4 cl lys eller mørk rom, efter hvad du foretrækker.", "award": null}, {"name": "Amaretto Sour", "color": "#c9822f", "ink": "#24140a", "img": "https://tchin-tchin.dk/wp-content/uploads/2025/03/Amaretto-sour-min-450x450.jpg", "url": "https://tchin-tchin.dk/vare/amaretto-sour-alkoholfri/", "notes": "Citron, amarettosirup og angostura", "spirit": "Tilsæt 2–4 cl bourbon, rom eller cognac til 10 cl Amaretto Sour. Det mest valgte er rom.", "award": null}, {"name": "Matchango", "color": "#7b9f45", "ink": "#141d06", "img": "https://tchin-tchin.dk/wp-content/uploads/2026/09/Matchango-glass.png", "url": "https://tchin-tchin.dk/vare/matchango-alkoholfri/", "notes": "Hjemmelavet matchasirup, mango, æble og yuzu", "spirit": "Tilføj 4 cl gin eller vodka til 10 cl Matchango. Shake med 3 isterninger og server med garnish.", "award": "Ny"}, {"name": "Cosmo Kiss", "color": "#d6416a", "ink": "#fff1f4", "img": "https://tchin-tchin.dk/wp-content/uploads/2026/09/Cosmo-kiss-glass.png", "url": "https://tchin-tchin.dk/vare/cosmo-kiss-alkoholfri/", "notes": "Hibiscus, tranebær, mandarin og appelsin", "spirit": "Tilføj 4 cl vodka til 10 cl Cosmo Kiss. Shake med 3 isterninger og server med garnish.", "award": "Ny"}];
   var root=document.documentElement, chips=document.querySelectorAll('.chip');
   var $=function(id){return document.getElementById(id)};
   function show(i){
