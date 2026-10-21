@@ -516,6 +516,14 @@ button{font:inherit;cursor:pointer}
   .timing.armed .marks li{opacity:1}
 }
 
+/* egen scrollbar under drinkvælgeren: følger drinkens farver */
+.chipnav{display:none!important}
+.chipbar{position:relative;height:8px;margin-top:12px;border-radius:999px;background:color-mix(in srgb,var(--ci) 24%,transparent);cursor:pointer;touch-action:none;transition:background .5s,height .2s}
+.chipbar .thumb{position:absolute;top:0;bottom:0;left:0;border-radius:999px;background:var(--ci);box-shadow:0 0 0 2px color-mix(in srgb,var(--c) 60%,transparent);transition:background .5s;cursor:grab}
+.chipbar.drag .thumb{cursor:grabbing}
+.chipwrap:not(.canL):not(.canR) + .chipbar{display:none}
+@media (hover:hover){.chipbar:hover{height:10px}}
+
 /* drinkvælgeren: ingen synlig scrollbar, bløde kanter og pile */
 .chipwrap{position:relative}
 .chips{scrollbar-width:none!important;-ms-overflow-style:none;scroll-snap-type:x proximity;padding-bottom:2px!important;padding-right:0!important;
@@ -1437,13 +1445,23 @@ window.addEventListener('hashchange',setTitle);
 (function(){
   var ul=document.querySelector('.chips'); if(!ul||ul.parentNode.classList.contains('chipwrap')) return;
   var w=document.createElement('div'); w.className='chipwrap'; ul.parentNode.insertBefore(w,ul); w.appendChild(ul);
-  var prev=document.createElement('button'), next=document.createElement('button');
-  prev.type=next.type='button'; prev.className='chipnav prev'; next.className='chipnav next';
-  prev.setAttribute('aria-label','Forrige drinks'); next.setAttribute('aria-label','Flere drinks');
-  prev.innerHTML='&#8249;'; next.innerHTML='&#8250;'; w.appendChild(prev); w.appendChild(next);
-  function upd(){var max=ul.scrollWidth-ul.clientWidth; w.classList.toggle('canL',ul.scrollLeft>4); w.classList.toggle('canR',ul.scrollLeft<max-4)}
-  function by(d){ul.scrollBy({left:d*ul.clientWidth*.7,behavior:reduce?'auto':'smooth'})}
-  prev.addEventListener('click',function(){by(-1)}); next.addEventListener('click',function(){by(1)});
+  var bar=document.createElement('div'); bar.className='chipbar'; bar.setAttribute('aria-hidden','true');
+  var th=document.createElement('span'); th.className='thumb'; bar.appendChild(th); w.parentNode.insertBefore(bar,w.nextSibling);
+  function upd(){
+    var max=ul.scrollWidth-ul.clientWidth;
+    w.classList.toggle('canL',ul.scrollLeft>4); w.classList.toggle('canR',ul.scrollLeft<max-4);
+    var bw=bar.clientWidth, tw=Math.max(40,bw*ul.clientWidth/ul.scrollWidth);
+    th.style.width=tw+'px'; th.style.transform='translateX('+(max>0?(bw-tw)*ul.scrollLeft/max:0)+'px)';
+  }
+  function toScroll(x,grab){var r=bar.getBoundingClientRect(),tw=th.offsetWidth,max=ul.scrollWidth-ul.clientWidth;var f=(x-r.left-grab)/(r.width-tw);ul.scrollLeft=Math.max(0,Math.min(1,f))*max}
+  var grab=0;
+  bar.addEventListener('pointerdown',function(e){
+    var tr=th.getBoundingClientRect(); grab=(e.clientX>=tr.left&&e.clientX<=tr.right)?e.clientX-tr.left:tr.width/2;
+    bar.classList.add('drag'); bar.setPointerCapture(e.pointerId); ul.style.scrollSnapType='none'; toScroll(e.clientX,grab);
+  });
+  bar.addEventListener('pointermove',function(e){if(bar.classList.contains('drag'))toScroll(e.clientX,grab)});
+  function end(){bar.classList.remove('drag');ul.style.scrollSnapType=''}
+  bar.addEventListener('pointerup',end); bar.addEventListener('pointercancel',end);
   ul.addEventListener('scroll',upd,{passive:true}); window.addEventListener('resize',upd); upd();
   window.__centerChip=function(i){
     var c=ul.querySelector('.chip[data-i="'+i+'"]'); if(!c) return; var li=c.parentNode;
