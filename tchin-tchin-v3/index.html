@@ -540,11 +540,13 @@ button{font:inherit;cursor:pointer}
 .gallery{overflow:hidden!important;padding-bottom:0!important;margin-left:-20px;margin-right:-20px;
   mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);-webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
 .gtrack{display:flex;gap:12px;width:max-content;animation:glide 48s linear infinite}
-.gtrack img{height:240px!important;width:240px!important;object-fit:cover;border-radius:18px;flex:none;transition:transform .35s}
+.gitem{flex:none;margin:0;background:var(--gc);color:var(--gi);border-radius:22px;padding:8px 8px 0;transition:transform .35s}
+.gitem img{display:block;height:232px!important;width:232px!important;object-fit:cover;border-radius:15px}
+.gitem figcaption{font-family:var(--disp);font-weight:700;font-size:1.25rem;line-height:1;padding:11px 6px 12px}
 .gallery:hover .gtrack,.gallery:focus-within .gtrack{animation-play-state:paused}
-@media (hover:hover){.gtrack img:hover{transform:scale(1.04)}}
+@media (hover:hover){.gitem:hover{transform:translateY(-6px) rotate(-1deg)}}
 @keyframes glide{to{transform:translateX(calc(-50% - 6px))}}
-@media (max-width:600px){.gtrack img{height:170px!important;width:170px!important}.gtrack{animation-duration:36s}}
+@media (max-width:600px){.gitem img{height:160px!important;width:160px!important}.gitem figcaption{font-size:1.05rem}.gtrack{animation-duration:36s}}
 @media (prefers-reduced-motion:reduce){
   .gallery{mask-image:none;-webkit-mask-image:none;margin-left:0;margin-right:0}
   .gtrack{animation:none;width:auto;flex-wrap:wrap}
@@ -1451,12 +1453,19 @@ window.addEventListener('hashchange',setTitle);
 var _showC=showDrink;
 showDrink=function(i){_showC(i); if(window.__centerChip) window.__centerChip(i)};
 
-/* billedbånd: kopiér billederne én gang, så båndet kan løbe i ring */
+/* billedbånd: hver drink i sin egen farve, kopieret én gang så båndet kan løbe i ring */
 (function(){
   var g=document.querySelector('.gallery'); if(!g||g.querySelector('.gtrack')) return;
+  var col={}; DRINKS.forEach(function(d){col[d.name]=[d.color,d.ink]});
+  col['Beetchin']=['#7a1f3d','#fff1f4']; col['Designated Tchiner']=['#dcb44f','#251a02'];
   var t=document.createElement('div'); t.className='gtrack';
-  [].slice.call(g.children).forEach(function(img){img.loading='eager';t.appendChild(img)});
-  [].slice.call(t.children).forEach(function(img){var c=img.cloneNode(true);c.alt='';c.setAttribute('aria-hidden','true');t.appendChild(c)});
+  [].slice.call(g.querySelectorAll('img')).forEach(function(img){
+    var c=col[img.alt]||['#1d1a17','#f3ece2'], f=document.createElement('figure');
+    f.className='gitem'; f.style.setProperty('--gc',c[0]); f.style.setProperty('--gi',c[1]);
+    img.loading='eager'; f.appendChild(img);
+    var cap=document.createElement('figcaption'); cap.textContent=img.alt; f.appendChild(cap); t.appendChild(f);
+  });
+  [].slice.call(t.children).forEach(function(f){var c=f.cloneNode(true);c.setAttribute('aria-hidden','true');c.querySelector('img').alt='';t.appendChild(c)});
   g.appendChild(t);
 })();
 
