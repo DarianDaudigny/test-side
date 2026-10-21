@@ -516,6 +516,26 @@ button{font:inherit;cursor:pointer}
   .timing.armed .marks li{opacity:1}
 }
 
+/* drinkvælgeren: ingen synlig scrollbar, bløde kanter og pile */
+.chipwrap{position:relative}
+.chips{scrollbar-width:none!important;-ms-overflow-style:none;scroll-snap-type:x proximity;padding-bottom:2px!important;padding-right:0!important;
+  --ml:#000;--mr:#000;
+  mask-image:linear-gradient(90deg,var(--ml),#000 56px,#000 calc(100% - 56px),var(--mr))!important;
+  -webkit-mask-image:linear-gradient(90deg,var(--ml),#000 56px,#000 calc(100% - 56px),var(--mr))!important}
+.chips::-webkit-scrollbar{display:none}
+.chips li{scroll-snap-align:center}
+.chipwrap.canL .chips{--ml:transparent}
+.chipwrap.canR .chips{--mr:transparent}
+.chipnav{position:absolute;top:50%;width:40px;height:40px;margin-top:-20px;border-radius:50%;border:0;background:var(--ci);color:var(--c);
+  display:none;place-items:center;font:600 1.2rem/1 var(--text);cursor:pointer;z-index:2;box-shadow:0 6px 18px rgba(0,0,0,.18);
+  transition:opacity .2s,transform .2s,background .5s,color .5s}
+.chipnav.prev{left:-6px}.chipnav.next{right:-6px}
+.chipnav:active{transform:scale(.94)}
+@media (min-width:981px){.chip{font-size:.88rem;padding:6px 11px 6px 6px;gap:6px}.chips{gap:5px!important}.chip .dot{width:16px;height:16px}}
+@media (hover:hover) and (pointer:fine){
+  .chipwrap.canL .chipnav.prev,.chipwrap.canR .chipnav.next{display:grid}
+}
+
 /* billedbånd i "Om os": glider selv, ingen scrollbar */
 .gallery{overflow:hidden!important;padding-bottom:0!important;margin-left:-20px;margin-right:-20px;
   mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);-webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
@@ -1410,6 +1430,26 @@ function setTitle(){
 }
 window.addEventListener('hashchange',setTitle);
 
+
+/* drinkvælgeren: pile, kanter og den valgte drink i midten */
+(function(){
+  var ul=document.querySelector('.chips'); if(!ul||ul.parentNode.classList.contains('chipwrap')) return;
+  var w=document.createElement('div'); w.className='chipwrap'; ul.parentNode.insertBefore(w,ul); w.appendChild(ul);
+  var prev=document.createElement('button'), next=document.createElement('button');
+  prev.type=next.type='button'; prev.className='chipnav prev'; next.className='chipnav next';
+  prev.setAttribute('aria-label','Forrige drinks'); next.setAttribute('aria-label','Flere drinks');
+  prev.innerHTML='&#8249;'; next.innerHTML='&#8250;'; w.appendChild(prev); w.appendChild(next);
+  function upd(){var max=ul.scrollWidth-ul.clientWidth; w.classList.toggle('canL',ul.scrollLeft>4); w.classList.toggle('canR',ul.scrollLeft<max-4)}
+  function by(d){ul.scrollBy({left:d*ul.clientWidth*.7,behavior:reduce?'auto':'smooth'})}
+  prev.addEventListener('click',function(){by(-1)}); next.addEventListener('click',function(){by(1)});
+  ul.addEventListener('scroll',upd,{passive:true}); window.addEventListener('resize',upd); upd();
+  window.__centerChip=function(i){
+    var c=ul.querySelector('.chip[data-i="'+i+'"]'); if(!c) return; var li=c.parentNode;
+    ul.scrollTo({left:li.offsetLeft-(ul.clientWidth-li.offsetWidth)/2,behavior:reduce?'auto':'smooth'});
+  };
+})();
+var _showC=showDrink;
+showDrink=function(i){_showC(i); if(window.__centerChip) window.__centerChip(i)};
 
 /* billedbånd: kopiér billederne én gang, så båndet kan løbe i ring */
 (function(){
